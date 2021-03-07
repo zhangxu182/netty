@@ -37,7 +37,7 @@ public class NettyServer {
                         ch.pipeline().addLast(new ServerHandler());
                     }
                 });
-        System.out.println("服务端启动成功……");
+        System.out.println("服务端初始化完成……");
 
         // 启动服务端
         ChannelFuture channelFuture = serverBootstrap.bind(6666).sync();

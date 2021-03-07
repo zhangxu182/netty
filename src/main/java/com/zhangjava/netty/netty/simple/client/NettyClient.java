@@ -33,7 +33,7 @@ public class NettyClient {
                     }
                 });
 
-        System.out.println("客户端启动……");
+        System.out.println("客户端初始化完成……");
         // 连接服务端
         ChannelFuture channelFuture = bootstrap.connect("127.0.0.1", 6666).sync();
         // 监听关闭事件
