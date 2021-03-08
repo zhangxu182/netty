@@ -41,6 +41,11 @@ public class NettyServer {
 
         // 启动服务端
         ChannelFuture channelFuture = serverBootstrap.bind(6666).sync();
+        channelFuture.addListener(future -> {
+            if (future.isSuccess()) {
+                System.out.println("端口绑定成功");
+            }
+        });
         // 监听关闭通道
         channelFuture.channel().closeFuture().sync();
     }
