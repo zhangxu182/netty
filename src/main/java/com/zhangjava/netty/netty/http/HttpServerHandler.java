@@ -24,6 +24,14 @@ public class HttpServerHandler extends SimpleChannelInboundHandler<HttpObject> {
             System.out.println("msg类型：" + msg.getClass());
             System.out.println("浏览器地址：" + ctx.channel().remoteAddress());
 
+            // 过滤请求
+            HttpRequest request = (HttpRequest) msg;
+            String uri = request.uri();
+            if ("/favicon.ico".equals(uri)) {
+                System.out.println("请求 favicon.ico 不做响应");
+                return;
+            }
+
             // 向客户端（浏览器）返回消息 [http协议]
             ByteBuf content = Unpooled.copiedBuffer("hello 浏览器", CharsetUtil.UTF_8);
             // 构建response对象
