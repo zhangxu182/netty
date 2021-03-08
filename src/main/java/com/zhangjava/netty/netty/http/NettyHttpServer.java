@@ -19,6 +19,9 @@ public class NettyHttpServer {
         ServerBootstrap serverBootstrap = new ServerBootstrap()
                 .group(bossGroup, workerGroup)
                 .channel(NioServerSocketChannel.class)
+                // handler 对应 BossGroup
+                .handler(null)
+                // childHandler 对应workerGroup
                 .childHandler(new HttpChannelInitializer());
         try {
             ChannelFuture channelFuture = serverBootstrap.bind(8888).sync();
