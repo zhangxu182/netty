@@ -20,7 +20,7 @@ public class NettyHttpServer {
                 .group(bossGroup, workerGroup)
                 .channel(NioServerSocketChannel.class)
                 // handler 对应 BossGroup
-                .handler(null)
+                //.handler(null)
                 // childHandler 对应workerGroup
                 .childHandler(new HttpChannelInitializer());
         try {
